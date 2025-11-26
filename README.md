@@ -104,38 +104,40 @@ El objetivo es imitar el funcionamiento de un asistente de parking real, manteni
 
 ### 11/11 — Propuesta y bases iniciales
 
-- Se decide desarrollar un **sistema de asistencia de aparcamiento** con Arduino.  
-- Revisión del funcionamiento del sensor ultrasónico y del buzzer.  
-- Creación del primer esquema del circuito y del archivo base `.ino`.
+- Se decide desarrollar un sistema de asistencia de aparcamiento utilizando Arduino dentro de Tinkercad.  
+- Se revisan las características del sensor ultrasónico PING))) y del buzzer en el entorno virtual.  
+- Primera versión del circuito digital y del archivo base del programa.  
 
 ---
 
 ### 13/11 — Investigación y planificación
 
-- Estudio de los tiempos de disparo y eco del sensor.  
-- Definición de los rangos de distancia para cada nivel (verde / amarillo / rojo).  
-- Planificación de las funciones que se usarán en el código para organizar mejor la lógica.
+- Análisis del funcionamiento del sensor en Tinkercad y estudio de los tiempos de pulso.  
+- Definición de los rangos de distancia (verde, amarillo, rojo y alerta crítica).  
+- Planificación de la estructura del código y diseño de las funciones que organizarán la lógica.  
 
 ---
 
-### 18/11 — Montaje básico
+### 18/11 — Construcción del prototipo digital
 
-- Conexión de los tres LEDs (pines 8, 9 y 10) con sus resistencias en protoboard.  
-- Cableado del buzzer en el pin 6.  
-- Pruebas con el monitor serie para comprobar que la lectura del sensor es consistente.  
-
----
-
-### 20/11 — Señales acústicas
-
-- Implementación de la función `parpadearLEDyBeep()` para combinar LED + beep.  
-- Ajuste de los tiempos de `delay()` para que los pitidos sean más rápidos cuanto más cerca está el obstáculo.  
-- Primera versión completa del sistema luz + sonido funcionando.
+- Se arma el circuito dentro de Tinkercad asignando los pines correspondientes a LEDs, buzzer y sensor.  
+- Se realizan pruebas iniciales en el monitor serie para validar las lecturas de distancia.  
+- Se confirma que el sensor responde correctamente en el simulador.  
 
 ---
 
-### 25/11 — Mejoras y pulido
+### 20/11 — Desarrollo de señales visuales y acústicas
 
-- Se ajustan los umbrales de distancia para que la transición entre verde/amarillo/rojo sea más intuitiva.  
-- Se mejora la organización del código con funciones auxiliares como `apagarTodo()`.  
-- El circuito y el programa quedan listos para la demostración final y documentación.
+- Implementación del comportamiento combinado de luces y sonido según la distancia detectada.  
+- Ajuste de los tiempos de parpadeo y de los pitidos para obtener una respuesta progresiva y clara.  
+- Primera versión totalmente funcional del sistema en el simulador.  
+
+---
+
+### 25/11 — Optimización y pulido final
+
+- Reajuste de los rangos de distancia para obtener transiciones más intuitivas entre colores.  
+- Creación de funciones auxiliares como `apagarTodo()` y separación de parpadeo con y sin sonido.  
+- Mejoras generales del código para hacerlo más legible, modular y fácil de mantener.  
+- El prototipo queda listo para demostración, documentación y extensión futura.  
+
