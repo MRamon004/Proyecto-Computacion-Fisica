@@ -1,169 +1,143 @@
-# 🚗 Proyecto: Sistema de Proximidad para Aparcamiento (Arduino)
+# 🚗 Sistema de Asistencia de Aparcamiento por Proximidad (Arduino)
 
-## 👥 Equipo
+## 👥 Integrantes
 
-- **Juan** — Programador  
-- **Darío** — Programador  
-
-Ambos colaboramos en la programación, conexión del hardware y validación del prototipo físico.
+- **Marcos**
+- **Fernando** 
 
 ---
 
-## 🎯 Objetivo del Proyecto
+## 🎯 Propósito del Proyecto
 
-Diseñar un **sistema de ayuda al aparcamiento basado en proximidad**, utilizando un **sensor ultrasónico HC-SR04** para medir la distancia con respecto a un obstáculo y un **buzzer + LEDs** para avisar al conductor con señales visuales y acústicas.
+Desarrollar un **asistente de aparcamiento basado en distancia**, usando un **sensor ultrasónico HC-SR04** para calcular la proximidad a un obstáculo y un **buzzer junto con LEDs indicadores** para mostrar el nivel de alerta al usuario.
 
-El sistema detectará la distancia del coche frente al objeto y responderá de la siguiente forma:
+El comportamiento del sistema dependerá de la distancia detectada:
 
-- 🟢 **Distancia segura** → LED verde — sin alarma  
-- 🟡 **Zona de alerta** → LED amarillo — pitidos lentos  
-- 🔴 **Peligro de colisión** → LED rojo — pitidos rápidos  
+| Distancia | Indicador | Respuesta |
+|----------|-----------|-----------|
+| 🟢 Lejana / segura | LED verde | Sin señal sonora |
+| 🟡 Media / alerta | LED amarillo | Pitidos pausados |
+| 🔴 Muy cercana / riesgo | LED rojo | Pitidos rápidos y continuos |
 
-El objetivo es crear un asistente de aparcamiento funcional, económico y educativo.
-
----
-
-## 📝 Descripción General
-
-- El sensor ultrasónico mide continuamente la distancia.
-- El microcontrolador procesa los valores y decide el nivel de alerta.
-- El sistema avisa con **patrones de sonido y color según la cercanía**.
-- Permite visualizar en tiempo real el riesgo de colisión.
-
-La finalidad es reproducir el comportamiento de un asistente de aparcamiento real, como los que llevan los vehículos modernos.
+El objetivo es imitar un asistente real de parking, sencillo pero completamente funcional.
 
 ---
 
-## 🔧 Componentes
+## 📝 Funcionamiento General
 
-### Sensores y actuadores
-
-- 📡 Sensor ultrasónico **HC-SR04**
-- 🔊 **Buzzer piezoeléctrico**
-- 💡 LEDs (verde/amarillo/rojo) o **tira RGB** opcional
-
-### Otros componentes
-
-- 🔌 Arduino UNO o similar  
-- 🧩 Protoboard  
-- 🔗 Resistencias  
-- 🔌 Cables Dupont  
+- El HC-SR04 realiza lecturas constantes de distancia.  
+- Arduino interpreta los valores recibidos y define el nivel de riesgo.  
+- El sistema responde con iluminación y sonido según la cercanía del objeto.  
+- Proporciona una retroalimentación en tiempo real para evitar choques al aparcar.
 
 ---
 
-## 📁 Contenido del repositorio
+## 🔧 Material Utilizado
 
-- `README.md`  
-  - Objetivo  
-  - Estado del proyecto  
-  - Bitácora de desarrollo  
-  - Explicación del funcionamiento  
+### Sensores / Salidas
 
-- Carpeta `src/` o `arduino/`  
-  - Código completo del sistema
+- 📡 HC-SR04 — Distancia por ultrasonidos  
+- 🔊 Buzzer piezoeléctrico  
+- 💡 LEDs verde/amarillo/rojo (o RGB como alternativa)
 
-- Carpeta `docs/`  
-  - Esquema del circuito (Tinkercad o Fritzing)  
-  - Capturas de las pruebas  
-  - Registro de componentes
+### Otros componentes necesarios
 
-- Extras  
-  - 📸 Fotos del montaje  
-  - 🎥 Vídeo del sistema funcionando  
+- Arduino UNO o equivalente  
+- Protoboard  
+- Resistencias  
+- Cables Dupont  
 
 ---
 
-## 🚦 Estado Actual
+## 📁 Estructura del Repositorio
 
-**Sprint 1 — base funcional del sistema**
-
-- 📡 Lectura estable del sensor ultrasónico  
-- 🟢 Visualización por LEDs  
-- 🔊 Control del buzzer según distancia  
-- 🔧 Código inicial estructurado  
+- `README.md` → Documentación principal  
+- `/src` o `/arduino` → Código fuente del sistema  
+- `/docs` → Planos, esquemas electrónicos e imágenes  
+- `/media` *(opcional)* → Fotografías del montaje + vídeos de funcionamiento  
 
 ---
 
-## 🗂️ Plan de trabajo (Sprints)
+## 🚦 Progreso Actual
 
-### 🟩 Sprint 1 — Detección de distancia (completado)
+**Fase inicial completada:**
 
-- Conexión del sensor HC-SR04  
-- Lectura y filtrado de distancia  
-- Envío de lectura por Serial  
-- Pruebas iniciales con buzzer  
+- Lectura estable del sensor ultrasónico  
+- LED indicador integrado  
+- Control del buzzer en función de la distancia  
+- Código base funcionando en protoboard  
 
-### 🟨 Sprint 2 — Señalización inteligente
+---
 
-- Intensidad de sonido según proximidad  
-- Integración de LEDs de tres niveles  
-- Esquema limpio para documentación  
-- Pruebas con diferentes rangos
+## 🗂️ Planificación por Fases
 
-### 🟥 Sprint final — Demo y presentación
+### 🟩 Etapa 1 — Lectura de distancia (Finalizada)
 
-- Caja o soporte para el sensor  
+- Conexión del HC-SR04  
+- Lecturas procesadas mediante Serial  
+- Pruebas iniciales de medición  
+- Revisión de estabilidad de señal
+
+### 🟨 Etapa 2 — Sistema de alertas
+
+- Añadir respuesta acústica progresiva  
+- Relación LED-distancia mejor definida  
+- Documentación del circuito  
+- Pruebas en entorno más realista
+
+### 🟥 Etapa final — Presentación y mejora visual
+
+- Montaje limpio o carcasa para sensor  
 - Material visual para exposición  
-- Vídeo mostrando funcionamiento real  
-- Presentación clara para evaluación  
+- Vídeo explicativo  
+- Ajuste fino de distancias umbral  
 
 ---
 
-## 📒 Bitácora de Trabajo
+## 📒 Registro de Desarrollo
 
-### 🗓️ 11/11 — Inicio del proyecto
-
-- Definimos el objetivo: sistema de proximidad para aparcamiento.  
-- Revisión de cómo funciona el sensor HC-SR04.  
-- Leímos documentación de temporizado y ultrasonidos en Arduino.  
-- Se estableció la estructura del repositorio.  
+### 📅 11/11 — Propuesta y bases iniciales
+- Se plantea el sistema de parking con medición por ultrasonidos.  
+- Revisión de funcionamiento del HC-SR04.  
+- Primer esquema conceptual y estructura del repositorio.
 
 ---
 
-### 🗓️ 13/11 — Investigación técnica
+### 📅 13/11 — Investigación y planificación
+- Lectura técnica del sensor y tiempos de respuesta.  
+- Simulación previa del circuito.  
+- Diseño preliminar de los niveles de alerta.
 
-- Estudio de rangos eficaces del sensor.  
-- Simulación del circuito en Tinkercad/Fritzing.  
-- Definimos niveles de alerta por distancia.  
-
-**Pendiente:** pruebas de medición en físico.
-
----
-
-### 🗓️ 18/11 — Montaje inicial en protoboard
-
-- Cableado correcto del sensor y LEDs.  
-- Primeras mediciones estables.  
-- Debug vía Serial para validar lecturas.  
-
-**Pendiente:** buzzer y alertas graduales.
+> **Tarea pendiente:** prueba física real.
 
 ---
 
-### 🗓️ 20/11 — Lógica de respuesta
+### 📅 18/11 — Montaje básico
+- Conexión del sensor y LEDs.  
+- Validación de lectura estable en monitor Serial.  
+- Primera interacción LED-distancia.
 
-- Implementación de sonidos según distancia.  
-- Ajuste del tiempo entre pitidos.  
-- Primera integración de señalización luminosa.  
-
-**Pendiente:** carcasa física / soporte.
-
----
-
-### 🗓️ 25/11 — Optimización y pulido
-
-- Filtrado de valores para evitar lecturas inestables.  
-- Gestión de errores y límites mínimos/máximos.  
-- Mejoras preparadas para la demo final.  
-
-**Pendiente:** grabar vídeo + documentación final.
+> **Pendiente:** añadir buzzer.
 
 ---
 
-## 📌 Tareas Pendientes
+### 📅 20/11 — Señales acústicas
+- Buzzer implementado con cambios de frecuencia.  
+- Ajuste de retardos y umbrales de alarma.  
+- Respuesta combinada luz + sonido operativa.
 
-- [ ] Soporte físico / diseño 3D opcional  
-- [ ] Añadir efecto PWM o tiras RGB dinámicas  
+---
+
+### 📅 25/11 — Mejoras y pulido
+- Reducción de fluctuación en lecturas.  
+- Se añaden márgenes de seguridad.  
+- Sistema listo para fase demostrativa.
+
+---
+
+## 📌 To-Do Final
+
+- [ ] Añadir carcasa o soporte imprimible  
 - [ ] Subir vídeo demostrativo  
-- [ ] Incluir esquemas en alta resolución  
-- [ ] Documentación final para entrega  
+- [ ] Documentar esquemas a mayor detalle  
+- [ ] Optimizar tiempo de respuesta del buzzer  
