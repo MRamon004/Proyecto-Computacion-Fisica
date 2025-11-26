@@ -71,21 +71,21 @@ El objetivo es imitar un asistente real de parking, sencillo pero completamente 
 
 ## 🗂️ Planificación por Fases
 
-### 🟩 Etapa 1 — Lectura de distancia (Finalizada)
+### Etapa 1 — Lectura de distancia (Finalizada)
 
 - Conexión del HC-SR04  
 - Lecturas procesadas mediante Serial  
 - Pruebas iniciales de medición  
 - Revisión de estabilidad de señal
 
-### 🟨 Etapa 2 — Sistema de alertas
+### Etapa 2 — Sistema de alertas
 
 - Añadir respuesta acústica progresiva  
 - Relación LED-distancia mejor definida  
 - Documentación del circuito  
 - Pruebas en entorno más realista
 
-### 🟥 Etapa final — Presentación y mejora visual
+### Etapa final — Presentación y mejora visual
 
 - Montaje limpio o carcasa para sensor  
 - Material visual para exposición  
@@ -96,48 +96,40 @@ El objetivo es imitar un asistente real de parking, sencillo pero completamente 
 
 ## 📒 Registro de Desarrollo
 
-### 📅 11/11 — Propuesta y bases iniciales
+### 11/11 — Propuesta y bases iniciales
 - Se plantea el sistema de parking con medición por ultrasonidos.  
 - Revisión de funcionamiento del HC-SR04.  
 - Primer esquema conceptual y estructura del repositorio.
 
 ---
 
-### 📅 13/11 — Investigación y planificación
+### 13/11 — Investigación y planificación
 - Lectura técnica del sensor y tiempos de respuesta.  
 - Simulación previa del circuito.  
 - Diseño preliminar de los niveles de alerta.
 
-> **Tarea pendiente:** prueba física real.
+
 
 ---
 
-### 📅 18/11 — Montaje básico
+### 18/11 — Montaje básico
 - Conexión del sensor y LEDs.  
 - Validación de lectura estable en monitor Serial.  
 - Primera interacción LED-distancia.
 
-> **Pendiente:** añadir buzzer.
+
 
 ---
 
-### 📅 20/11 — Señales acústicas
+### 20/11 — Señales acústicas
 - Buzzer implementado con cambios de frecuencia.  
 - Ajuste de retardos y umbrales de alarma.  
 - Respuesta combinada luz + sonido operativa.
 
 ---
 
-### 📅 25/11 — Mejoras y pulido
+### 25/11 — Mejoras y pulido
 - Reducción de fluctuación en lecturas.  
 - Se añaden márgenes de seguridad.  
 - Sistema listo para fase demostrativa.
 
----
-
-## 📌 To-Do Final
-
-- [ ] Añadir carcasa o soporte imprimible  
-- [ ] Subir vídeo demostrativo  
-- [ ] Documentar esquemas a mayor detalle  
-- [ ] Optimizar tiempo de respuesta del buzzer  
