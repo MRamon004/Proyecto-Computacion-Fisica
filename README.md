@@ -80,19 +80,18 @@ El objetivo es imitar el funcionamiento de un asistente de parking real, manteni
 
 ## 🗂️ Planificación por Fases
 
-### Etapa 1 — Lectura de distancia (Finalizada)
-
+### Etapa 1 — Lectura de distancia 
 - Conexión del sensor ultrasónico al pin 7 y alimentación 5V/GND.  
 - Implementación de la función `readUltrasonicDistance()` en el código para obtener la distancia.  
 - Visualización de las lecturas por el monitor serie para comprobar estabilidad.
 
-### Etapa 2 — Sistema de alertas (En curso)
+### Etapa 2 — Sistema de alertas 
 
 - Asociación de rangos de distancia a cada LED (verde/amarillo/rojo).  
 - Implementación de funciones como `parpadearLED()` y `parpadearLEDyBeep()` para combinar luz y sonido.  
 - Ajuste de la velocidad de parpadeo y del tiempo de beep en función de la proximidad.
 
-### Etapa final — Presentación y mejora visual (Pendiente)
+### Etapa final — Presentación y mejora visual 
 
 - Montaje más limpio del circuito (cables ordenados / posible carcasa).  
 - Preparación de material gráfico para la presentación (capturas y esquemas).  
@@ -110,27 +109,11 @@ El objetivo es imitar el funcionamiento de un asistente de parking real, manteni
 
 ---
 
-### 13/11 — Investigación y planificación
-
-- Análisis del funcionamiento del sensor en Tinkercad y estudio de los tiempos de pulso.  
-- Definición de los rangos de distancia (verde, amarillo, rojo y alerta crítica).  
-- Planificación de la estructura del código y diseño de las funciones que organizarán la lógica.  
-
----
-
 ### 18/11 — Construcción del prototipo digital
 
 - Se arma el circuito dentro de Tinkercad asignando los pines correspondientes a LEDs, buzzer y sensor.  
 - Se realizan pruebas iniciales en el monitor serie para validar las lecturas de distancia.  
 - Se confirma que el sensor responde correctamente en el simulador.  
-
----
-
-### 20/11 — Desarrollo de señales visuales y acústicas
-
-- Implementación del comportamiento combinado de luces y sonido según la distancia detectada.  
-- Ajuste de los tiempos de parpadeo y de los pitidos para obtener una respuesta progresiva y clara.  
-- Primera versión totalmente funcional del sistema en el simulador.  
 
 ---
 
