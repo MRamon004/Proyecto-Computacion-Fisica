@@ -1,4 +1,4 @@
-# 🚗 Sistema de Asistencia de Aparcamiento por Proximidad (Arduino)
+# 🐍 Juego Snake con Arduino y Matriz LED 8x8
 
 ## 👥 Integrantes
 
@@ -9,93 +9,91 @@
 
 ## 🎯 Propósito del Proyecto
 
-Desarrollar un **asistente de aparcamiento basado en distancia**, utilizando un **sensor ultrasónico** para medir la proximidad a un obstáculo y un **buzzer con tres LEDs indicadores** para mostrar el nivel de alerta al usuario.
+Desarrollar una versión del clásico juego **Snake** utilizando **Arduino**, una **matriz LED 8x8** como sistema de visualización, un **joystick analógico** para el control del movimiento y un **buzzer** para proporcionar feedback sonoro.
 
-El comportamiento del sistema depende de la distancia medida por el sensor:
-
-| Distancia              | Indicador    | Respuesta                                   |
-|------------------------|-------------|---------------------------------------------|
-| 🟢 Lejana / segura     | LED verde   | Solo se enciende el LED verde               |
-| 🟡 Media / de alerta   | LED amarillo| Parpadeo medio + pitidos pausados           |
-| 🔴 Muy cercana / riesgo| LED rojo    | Parpadeo rápido + pitidos continuos / rápidos |
-
-El objetivo es imitar el funcionamiento de un asistente de parking real, manteniendo un montaje sencillo y fácil de replicar.
+El objetivo del juego es mover la serpiente por la matriz, recoger manzanas para aumentar su tamaño y evitar colisiones con los bordes o con su propio cuerpo, reproduciendo la experiencia básica del juego original en un entorno de hardware sencillo.
 
 ---
 
 ## 📝 Funcionamiento General
 
-- El sensor ultrasónico (conectado al pin digital **7**) realiza lecturas periódicas de distancia.  
-- Arduino calcula la distancia a partir del tiempo de eco y evalúa en qué rango se encuentra.  
-- Según el rango:
-  - Enciende uno de los tres LEDs (verde, amarillo o rojo).  
-  - Activa el **buzzer** (pin **6**) con una frecuencia de pitidos distinta según la cercanía.  
-- El código se ejecuta en bucle, proporcionando **información en tiempo real** para ayudar al aparcamiento.
+- El estado del juego se representa en una **matriz LED 8x8**, controlada mediante un sistema de refresco por filas.  
+- El **joystick analógico** permite controlar la dirección del snake (arriba, abajo, izquierda y derecha).  
+- El movimiento del snake se gestiona mediante intervalos de tiempo para asegurar una velocidad constante.  
+- Cuando el snake recoge una manzana, aumenta su longitud y se genera una nueva de forma aleatoria.  
+- Si se produce una colisión, el juego se reinicia automáticamente.  
+- El **buzzer** emite sonidos distintos al comer una manzana y al perder la partida.
+
+Todo el sistema funciona en tiempo real dentro del bucle principal de Arduino.
 
 ---
 
 ## 🔧 Material Utilizado
 
-### Sensores / Salidas
+### Entradas / Salidas
 
-- 📡 Sensor ultrasónico de distancia (tipo PING/HC-SR04 o equivalente)  
-- 🔊 Buzzer piezoeléctrico  
-- 💡 3 LEDs:
-  - LED verde → conectado al pin **10**  
-  - LED amarillo → conectado al pin **9**  
-  - LED rojo → conectado al pin **8**  
+- 🎮 Joystick analógico  
+- 🔊 Buzzer pasivo  
+- 💡 Matriz LED 8x8 (modelo 1588BS)
 
 ### Otros componentes necesarios
 
 - Arduino UNO o placa compatible  
 - Protoboard  
-- Resistencias para los LEDs  
-- Cables Dupont macho–macho / macho–hembra  
+- Resistencias para la matriz LED  
+- Cables Dupont macho–macho  
 
 ---
 
 ## 📁 Estructura del Repositorio
 
-- `README.md` → Descripción del proyecto, funcionamiento y desarrollo  
-- `/arduino` o `/src` → Código fuente del sistema de aparcamiento (`Codigo_Circuito_de_Aparcamiento.ino`)  
+- `README.md` → Descripción del proyecto y funcionamiento  
+- `/src` o `/arduino` → Código fuente del juego Snake (`Snake_Arduino.ino`)  
 - `/docs` →  
-  - Esquema del circuito (captura de Tinkercad/Fritzing)  
-  - Notas de diseño y referencias  
+  - Esquema del circuito  
+  - Notas de diseño y explicación del código  
 - `/media` *(opcional)* →  
-  - Fotografías del montaje real  
-  - Vídeo corto mostrando el sistema en funcionamiento  
+  - Fotografías del montaje físico  
+  - Vídeo corto mostrando el juego en funcionamiento  
 
 ---
 
 ## 🚦 Progreso Actual
 
-**Fase inicial completada:**
+**Proyecto completado:**
 
-- Lectura estable del sensor ultrasónico desde Arduino.  
-- Control de los **tres LEDs** (verde, amarillo y rojo) según el rango de distancia.  
-- Activación del **buzzer** con distintos patrones de pitido según lo cerca que esté el obstáculo.  
-- Código base probado sobre protoboard usando el circuito mostrado en el esquema.
+- Control correcto de la matriz LED 8x8.  
+- Movimiento fluido del snake mediante joystick analógico.  
+- Generación aleatoria de manzanas evitando posiciones ocupadas.  
+- Detección de colisiones con bordes y cuerpo del snake.  
+- Implementación de feedback sonoro con buzzer.  
+- Código organizado mediante funciones para facilitar su comprensión y mantenimiento.
 
 ---
 
 ## 🗂️ Planificación por Fases
 
-### Etapa 1 — Lectura de distancia 
-- Conexión del sensor ultrasónico al pin 7 y alimentación 5V/GND.  
-- Implementación de la función `readUltrasonicDistance()` en el código para obtener la distancia.  
-- Visualización de las lecturas por el monitor serie para comprobar estabilidad.
+### Etapa 1 — Visualización en la matriz
 
-### Etapa 2 — Sistema de alertas 
+- Estudio del funcionamiento de la matriz LED 8x8.  
+- Implementación del refresco por filas para mostrar gráficos en la matriz.  
+- Creación del buffer interno para representar el estado del juego.
 
-- Asociación de rangos de distancia a cada LED (verde/amarillo/rojo).  
-- Implementación de funciones como `parpadearLED()` y `parpadearLEDyBeep()` para combinar luz y sonido.  
-- Ajuste de la velocidad de parpadeo y del tiempo de beep en función de la proximidad.
+---
 
-### Etapa final — Presentación y mejora visual 
+### Etapa 2 — Control y lógica del juego
 
-- Montaje más limpio del circuito (cables ordenados / posible carcasa).  
-- Preparación de material gráfico para la presentación (capturas y esquemas).  
-- Grabación de un vídeo corto donde se observe cómo cambian los LEDs y el buzzer al acercar un objeto al sensor.  
+- Lectura del joystick mediante entradas analógicas.  
+- Implementación del control de dirección evitando giros inválidos.  
+- Desarrollo de la lógica de movimiento del snake y gestión del tiempo.  
+
+---
+
+### Etapa final — Sonido y pulido
+
+- Implementación del buzzer para eventos importantes del juego.  
+- Ajuste de tiempos y comportamiento general para mejorar la jugabilidad.  
+- Preparación del proyecto para su montaje físico y presentación final.
 
 ---
 
@@ -103,24 +101,23 @@ El objetivo es imitar el funcionamiento de un asistente de parking real, manteni
 
 ### 11/11 — Propuesta y bases iniciales
 
-- Se decide desarrollar un sistema de asistencia de aparcamiento utilizando Arduino dentro de Tinkercad.  
-- Se revisan las características del sensor ultrasónico PING))) y del buzzer en el entorno virtual.  
-- Primera versión del circuito digital y del archivo base del programa.  
+- Decisión de desarrollar el juego Snake como proyecto en Arduino.  
+- Análisis de los componentes necesarios y viabilidad del proyecto.  
+- Primera estructura del código y pruebas iniciales en Tinkercad.
 
 ---
 
-### 18/11 — Construcción del prototipo digital
+### 18/11 — Desarrollo del juego
 
-- Se arma el circuito dentro de Tinkercad asignando los pines correspondientes a LEDs, buzzer y sensor.  
-- Se realizan pruebas iniciales en el monitor serie para validar las lecturas de distancia.  
-- Se confirma que el sensor responde correctamente en el simulador.  
+- Implementación del refresco de la matriz LED.  
+- Desarrollo del movimiento del snake y control mediante joystick.  
+- Pruebas de colisiones y reinicio del juego.
 
 ---
 
-### 25/11 — Optimización y pulido final
+### 25/11 — Optimización y finalización
 
-- Reajuste de los rangos de distancia para obtener transiciones más intuitivas entre colores.  
-- Creación de funciones auxiliares como `apagarTodo()` y separación de parpadeo con y sin sonido.  
-- Mejoras generales del código para hacerlo más legible, modular y fácil de mantener.  
-- El prototipo queda listo para demostración, documentación y extensión futura.  
+- Mejora de la organización del código mediante funciones.  
+- Implementación del sonido con buzzer.  
+- Ajustes finales de jugabilidad y preparación de la documentación.  
 
