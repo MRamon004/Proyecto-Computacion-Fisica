@@ -45,19 +45,6 @@ Todo el sistema funciona en tiempo real dentro del bucle principal de Arduino.
 
 ---
 
-## 📁 Estructura del Repositorio
-
-- `README.md` → Descripción del proyecto y funcionamiento  
-- `/src` o `/arduino` → Código fuente del juego Snake (`Snake_Arduino.ino`)  
-- `/docs` →  
-  - Esquema del circuito  
-  - Notas de diseño y explicación del código  
-- `/media` *(opcional)* →  
-  - Fotografías del montaje físico  
-  - Vídeo corto mostrando el juego en funcionamiento  
-
----
-
 ## 🚦 Progreso Actual
 
 **Proyecto completado:**
